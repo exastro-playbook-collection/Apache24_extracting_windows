@@ -1,0 +1,7 @@
+---
+VAR_Apache_extracting_rolename:
+  - Apache24_WIN_install
+  - Apache24_WIN_setup
+  - Apache24_WIN_ossetup
+VAR_Apache_gathering_dest: "{{ playbook_dir }}/_gathered_data"
+VAR_Apache_extracting_dest: "{{ playbook_dir }}/_parameters"
