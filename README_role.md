@@ -11,7 +11,7 @@
 
 - 管理サーバー（Ansible実行サーバー）
   - OS：RHEL7.4（CentOS7.4）/RHEL8.0（CentOS8.0）
-  - Ansible：Version 2.8
+  - Ansible：Version 2.8, 2.9
   - Python：2.7 or 3.6
 - 対象サーバー
   - 利用しているロール、共通部品の仕様に準拠します。
@@ -41,14 +41,24 @@
 
     | Name                            | Default Value | Description                        |
     | ------------------------------- | ------------- | -----------------------------------|
-    |`VAR_Apache_gathering_dest`      |'{{ playbook_dir }}/_gathered_data' |収集した設定情報の格納先パス |
-    |`VAR_Apache_extracting_dest`     |'{{ playbook_dir }}/_parameters'    |生成したパラメータの出力先パス  |
+    | `VAR_Apache_gathering_dest`     | '{{ playbook_dir }}/_gathered_data' | 収集した設定情報の格納先パス |
+    | `VAR_Apache_extracting_dest`    | '{{ playbook_dir }}/_parameters'    | 生成したパラメータの出力先パス |
+
+- Apache24_gathering_windows
+
+    | Name                                    |   Default Value   | Description                        |
+    | --------------------------------------- | ----------------- | -----------------------------------|
+    | `VAR_Apache24_WIN_localpkg_src`         | /tmp | バイナリの配置ディレクトリ |
+    | `VAR_Apache24_WIN_localpkg_dst`         | C:\temp | ApacheおよびMicrosoft Visual C++ 2017 再頒布可能パッケージの一時保存先 |
+    | `VAR_Apache24_WIN_path`                 | C:\Apache24 | Apacheインストール先フォルダ |
+    | `VAR_Apache24_WIN_localpkg_VC_file`     | VC_redist.x64.exe | Microsoft Visual C++ 2017 再頒布可能パッケージのファイル名 |
+    | `VAR_Apache24_WIN_localpkg_Apache_file` | httpd-2.4.41-win64-VS16.zip | Apacheバイナリのファイル名 |
 
 - Apache24_extracting_windows
 
-    | Name                             | Default Value                    | Description      |
-    | -------------------------------- | -------------------------------- | -----------------|
-    |`VAR_Apache_extracting_rolename`  |'Apache24_WIN_setup'              |パラメータ生成対象 (*1) |
+    | Name                             | Default Value                    | Description        |
+    | -------------------------------- | -------------------------------- | -------------------|
+    | `VAR_Apache_extracting_rolename` | 'Apache24_WIN_setup'             | パラメータ生成対象 (*1) |
 
 (*1) 本変数値は収集・パラメータ生成時の識別子として使用するため、通常は変更しないでください。
 
